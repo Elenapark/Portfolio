@@ -126,6 +126,16 @@ button {
     background-color: var(--color-dark-violet);
 }
 
+.navbar__toggle-btn {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    font-size: 24px;
+    color: var(--color-white);
+    /*opacity:0으로 하게되면 마우스를 올리면 클릭이되버리므로 display:none으로 하자*/
+    display: none;
+}
+
 /*Home*/
 
 #home {
@@ -441,7 +451,7 @@ button {
     color: var(--color-light-grey);
 }
 
-.testimonial__speech-bubble a{
+.testimonial__speech-bubble a {
     color: var(--color-dark-violet);
 }
 
@@ -453,8 +463,8 @@ button {
 
 .contact__title,
 .contact__email,
-.contact__rights{
-    color:var(--color-white);
+.contact__rights {
+    color: var(--color-white);
 }
 
 
@@ -469,8 +479,46 @@ button {
 
 .contact__links i:hover {
     transform: scale(1.2);
-    color:var(--color-mint);
+    color: var(--color-mint);
     transition: all var(--animation-duration) ease-in;
 }
 
+/*768px 아래 width인경우(모바일용)*/
+@media screen and (max-width: 768px) {
+    .navbar__toggle-btn {
+        display: block;
+    }
 
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar__menu {
+        flex-direction: column;
+        text-align: center;
+        width:100%;
+        display: none;
+    }
+
+    .about__majors {
+        flex-direction: column;
+    }
+
+    .major {
+        margin-bottom: 38px;
+    }
+
+    .skillset {
+        flex-direction: column;
+    }
+    .project {
+        /*화면의 빈공간이 남지 않게 알아서 빈공간을 메꿔주는 역할*/
+        flex-grow: 1;
+    }
+
+    .testimonial__avatar {
+        width: 80px;
+        height: 80px;
+    }
+}
