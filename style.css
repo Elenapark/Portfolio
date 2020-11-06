@@ -28,11 +28,15 @@
 
     /*Size*/
     --size-border-radius: 4px;
+
+    /*Animation*/
+    --animation-duration: 300ms;
 }
 
 * {
     /*width,heigth에 padding border값 포함*/
     box-sizing: border-box;
+    list-style: none;
 }
 
 /*typography*/
@@ -149,4 +153,142 @@ button {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
+}
+
+/*Section common*/
+
+.section {
+    text-align: center;
+    padding: 50px;
+    /*오른쪽에만 있던 margin을 양옆으로 균등히 배분해야 중간정렬이 됨*/
+    margin: auto;
+}
+
+.section-container {
+    /*원하는 부분만 적용하도록 section에서 따로 빼줌*/
+    max-width: 1200px;
+    margin: auto;
+}
+
+.about__majors {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0;
+}
+
+.major__icon {
+    width: 170px;
+    height: 170px;
+    font-size: 70px;
+    line-height: 170px;
+    margin: auto;
+    color: var(--color-blue);
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.major__title,
+.major__description {
+    color: var(--color-dark-grey);
+}
+
+.major__description {
+    font-size: var(--font-small);
+}
+
+.major__icon i:hover{
+    color:var(--color-dark-violet);
+    transform: scale(1.2);
+}
+
+.major__icon i {
+   transition: all var(--animation-duration) ease ;
+}
+
+.career {
+    display: flex;
+    align-items: center;
+}
+
+.career__description {
+    margin: 0 16px;
+    text-align: left;
+}
+
+.career__name,
+.career__period {
+    color: var(--color-light-grey);
+}
+
+.career__name {
+    font-size: var(--font-small);
+}
+
+.career__period {
+    font-size: var(--font-micro);
+}
+
+/*skills*/
+
+#skills {
+    background-color: var(--color-yellow);
+}
+
+.skillset {
+    display: flex;
+    background-color: var(--color-light-grey);
+    color: var(--color-light-white);
+    margin: 20px 0;
+}
+
+.skillset__left {
+    flex-basis: 60%;
+    background-color: var(--color-dark-grey);
+    padding: 20px 40px;
+}
+
+.skill__description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill {
+    margin-bottom: 16px;
+}
+
+.skill__bar {
+    /*프로그레스바 컨테이너*/
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-grey);
+}
+
+.skill__value {
+    height: 3px;
+    background-color: var(--color-orange);
+}
+
+.skillset__right {
+    flex-basis: 40%;
+}
+
+.skillset__title {
+    margin: 0;
+    color: var(--color-white);
+}
+
+.tools {
+    background-color: var(--color-grey);
+}
+
+.tools__list,
+.etc__list {
+    margin:auto;
+    padding-left: 0;
+}
+
+.tools,
+.etc {
+    padding: 20px;
 }
