@@ -13,6 +13,7 @@
     --color-yellow: #fff7d1;
     --color-orange: #feb546;
     --color-black: #000000;
+    --color-mint: #59B0B8;
 
     /*Font size*/
     --font-large: 48px;
@@ -444,12 +445,32 @@ button {
     color: var(--color-dark-violet);
 }
 
+/*contact*/
+
+#contact {
+    background-color: var(--color-light-violet);
+}
+
+.contact__title,
+.contact__email,
+.contact__rights{
+    color:var(--color-white);
+}
 
 
+.contact__title {
+    margin: 32px 0;
+}
 
+.contact__links {
+    font-size: var(--font-large);
+    margin: 24px 0;
+}
 
-
-
-
+.contact__links i:hover {
+    transform: scale(1.2);
+    color:var(--color-mint);
+    transition: all var(--animation-duration) ease-in;
+}
 
 
