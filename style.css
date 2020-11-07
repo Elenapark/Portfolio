@@ -153,8 +153,8 @@ button {
 }
 
 .home__avatar {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     border: 2px solid var(--color-light-white);
 }
@@ -172,6 +172,10 @@ button {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
+}
+
+.home__contact:hover {
+    background-color: var(--color-dark-violet);
 }
 
 /*Section common*/
@@ -326,6 +330,7 @@ button {
     border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
     padding: 8px 48px;
+    position: relative;
 }
 
 .category__btn.selected,
@@ -351,9 +356,9 @@ button {
     height: 24px;
     line-height: 24px;
     display: inline-block;
-    position: relative;
+    position: absolute;
     top: -20px;
-    left: 4px;
+    right: 16px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
@@ -410,7 +415,6 @@ button {
     opacity: 0.8;
     /*내려놨던 10px을 0px로 되돌려놓기: 올라오는 느낌을 줌*/
     transform: translateY(0px);
-
 }
 
 .project__description h3 {
@@ -529,14 +533,33 @@ button {
 
 /*768px 이하 width인경우(모바일용)*/
 @media screen and (max-width: 768px) {
+    /*모바일일 경우 아래 폰트사이즈 적용*/
+    :root {
+        /*Font size*/
+        --font-large: 30px;
+        --font-medium: 18px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 12px;
+    }
+
     .navbar__toggle-btn {
         display: block;
+        top: 16px;
+        right:16px;
+        font-size: var(--font-medium);
     }
 
     #navbar {
         flex-direction: column;
         align-items: flex-start;
         background-color: var(--color-light-violet);
+    }
+
+    /*모바일일경우 section의 공간낭비 줄이기 */
+    .section {
+        padding: 16px;
+        padding-top: 50px;
     }
 
     #navbar.navbar--dark {
@@ -546,32 +569,70 @@ button {
     .navbar__menu {
         flex-direction: column;
         text-align: center;
-        width:100%;
+        width: 100%;
         display: none;
     }
 
     .navbar__menu.open {
         display: block;
     }
+
     .about__majors {
         flex-direction: column;
+        margin-top: 30px;
+        margin-bottom: 0;
     }
 
     .major {
-        margin-bottom: 38px;
+        margin-bottom: 30px;
     }
 
     .skillset {
         flex-direction: column;
     }
+
+    .category__btn {
+        width: 100%;
+        margin: 4px 0;
+    }
+
     .project {
         /*화면의 빈공간이 남지 않게 알아서 빈공간을 메꿔주는 역할*/
         flex-grow: 1;
     }
 
+    .testimonial {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonials {
+        margin: 20px;
+    }
+
     .testimonial__avatar {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .testimonial__avatar:nth-child(odd),
+    .testimonial__avatar:nth-child(even) {
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    /*모바일에서는 스피치버블이 항상 뒤에나오게 order를 크게줌*/
+    .testimonial__speech-bubble {
+        order: 1;
+    }
+
+    .arrow-up {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        line-height: 50px;
+        right:16px;
+        bottom:16px;
     }
 }
 
