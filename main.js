@@ -5,9 +5,9 @@ const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     console.log(window.scrollY);
-      if(window.scrollY > navbarHeight){
+    if (window.scrollY > navbarHeight) {
         navbar.classList.add("navbar--dark");
-    }else {
+    } else {
         navbar.classList.remove("navbar--dark");
     }
 })
@@ -17,11 +17,23 @@ navbarMenu.addEventListener("click", (e) => {
     const target = e.target;
     const link = target.dataset.link;
     console.log(link);
-    if(link === null) {
+    if (link === null) {
         return;
     }
-    const scrollTo = document.querySelector(link);
-    console.log(scrollTo);
-    scrollTo.scrollIntoView({behavior: "smooth"});
+    scrollIntoView(link);
 })
 
+// contact버튼 클릭 시 스크롤을 contact로 이동
+const homeContactBtn = document.querySelector(".home__contact");
+homeContactBtn.addEventListener("click", () => {
+    // const contact = document.querySelector("#contact");
+    // const contactHeight = contact.offsetTop;
+    // window.scrollTo({top:contactHeight, behavior:"smooth"});
+    scrollIntoView("#contact");
+})
+
+
+function scrollIntoView(selector) {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({behavior: "smooth"});
+}
