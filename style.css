@@ -470,6 +470,7 @@ button {
 
 #contact {
     background-color: var(--color-light-violet);
+    position: relative;
 }
 
 .contact__title,
@@ -494,7 +495,31 @@ button {
     transition: all var(--animation-duration) ease-in;
 }
 
-/*768px 아래 width인경우(모바일용)*/
+/*Scroll*/
+
+.arrow-up {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    font-size: var(--font-large);
+    color: var(--color-white);
+    background-color: var(--color-dark-violet);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    transition: all 300ms ease-in;
+    /* invisible일때 클릭 안되도록*/
+    pointer-events: none;
+}
+
+.arrow-up.visible {
+    opacity: 1;
+    pointer-events: visible;
+}
+
+
+/*768px 이하 width인경우(모바일용)*/
 @media screen and (max-width: 768px) {
     .navbar__toggle-btn {
         display: block;
@@ -533,3 +558,5 @@ button {
         height: 80px;
     }
 }
+
+

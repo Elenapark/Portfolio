@@ -40,15 +40,23 @@ document.addEventListener("scroll", () => {
     home.style.opacity = 1 - window.scrollY / homeHeight;
 })
 
+// scroll시 arrowup버튼 생성.
 
+const arrowUpBtn = document.querySelector(".arrow-up");
 
+document.addEventListener("scroll", () => {
+    // homeheight을 반정도 내려왔을 때
+    if(window.scrollY > homeHeight /2) {
+        arrowUpBtn.classList.add("visible");
+    }else{
+        arrowUpBtn.classList.remove("visible");
+    }
+})
 
-
-
-
-
-
-
+// arrowup버튼 클릭시 최상단으로 이동
+arrowUpBtn.addEventListener("click", () => {
+    scrollIntoView("#home");
+})
 
 
 function scrollIntoView(selector) {
