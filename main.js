@@ -67,24 +67,37 @@ const projects = document.querySelectorAll(".project"); // 배열이 할당됨
 workBtnContainer.addEventListener("click", (e) => {
     // span 클릭 시 undefined 반환을 대비하여 해당 span이 속한 부모태그의 filter속성값을 넣도록 함
     const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-    if(filter === undefined) {
+    if (filter === undefined) {
         return;
     }
-    //animation 추가
-    projectsContainer.classList.add("anim-out");
+    // 이전에 클릭된 요소의 class를 없애고 새로 클릭된 요소에 class부여하기
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
 
+    console.log(e.target.nodeName);
+
+    // e.target의 nodename이 button이면 click한 target 그대로 쓰고,
+    // button이 아니면(즉, span일경우) click된 요소의 parentNode(span의 부모태그인 button)를 target으로 쓰기
+    // 즉 target에는 BUTTON만 할당이 되도록!
+
+    const target =
+        e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('selected');
+
+    //animation 먼저 추가
+    projectsContainer.classList.add("anim-out");
     // 0.3초 이후 필터링을 함과 동시에 animation 제거 (animation이 어색하지 않게 작용하기위함)
     setTimeout(() => {
         projects.forEach((project) => {
             console.log(project.dataset.type);
-            if(filter === "*" || filter === project.dataset.type){
+            if (filter === "*" || filter === project.dataset.type) {
                 project.classList.remove("invisible");
-            }else {
+            } else {
                 project.classList.add("invisible");
             }
         });
-       projectsContainer.classList.remove("anim-out");
-    },300)
+        projectsContainer.classList.remove("anim-out");
+    }, 300)
 
 
     // 아래는 foreach외 사용가능한 문법
