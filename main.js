@@ -4,7 +4,7 @@
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
-   // console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY > navbarHeight) {
         navbar.classList.add("navbar--dark");
     } else {
@@ -46,9 +46,9 @@ const arrowUpBtn = document.querySelector(".arrow-up");
 
 document.addEventListener("scroll", () => {
     // homeheight을 반정도 내려왔을 때
-    if(window.scrollY > homeHeight /2) {
+    if (window.scrollY > homeHeight / 2) {
         arrowUpBtn.classList.add("visible");
-    }else{
+    } else {
         arrowUpBtn.classList.remove("visible");
     }
 })
@@ -57,6 +57,49 @@ document.addEventListener("scroll", () => {
 arrowUpBtn.addEventListener("click", () => {
     scrollIntoView("#home");
 })
+
+// work project filtering
+
+const workBtnContainer = document.querySelector(".work__categories");
+const projectsContainer = document.querySelector(".work__projects");
+const projects = document.querySelectorAll(".project"); // 배열이 할당됨
+
+workBtnContainer.addEventListener("click", (e) => {
+    // span 클릭 시 undefined 반환을 대비하여 해당 span이 속한 부모태그의 filter속성값을 넣도록 함
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if(filter === undefined) {
+        return;
+    }
+    //animation 추가
+    projectsContainer.classList.add("anim-out");
+
+    // 0.3초 이후 필터링을 함과 동시에 animation 제거 (animation이 어색하지 않게 작용하기위함)
+    setTimeout(() => {
+        projects.forEach((project) => {
+            console.log(project.dataset.type);
+            if(filter === "*" || filter === project.dataset.type){
+                project.classList.remove("invisible");
+            }else {
+                project.classList.add("invisible");
+            }
+        });
+       projectsContainer.classList.remove("anim-out");
+    },300)
+
+
+    // 아래는 foreach외 사용가능한 문법
+    // for(let project of projects) {
+    //     console.log(project);
+    // }
+    //
+    // let project;
+    // for (let i = 0; i < projects.length; i++) {
+    //     project = projects[i];
+    //     console.log(project);
+    //
+    // }
+
+});
 
 
 function scrollIntoView(selector) {
