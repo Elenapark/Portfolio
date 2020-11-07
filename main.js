@@ -1,6 +1,6 @@
 'use strict';
 
-// navbar가 최상단에 있을 때 투명하게 설정,  navbar 높이만큼 스크롤 시 색상 부여
+// navbar가 최상단에 있을 때 투명하게 설정,  navbar 높이만큼 스크롤 시 dark 색상 부여
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
@@ -11,6 +11,7 @@ document.addEventListener('scroll', () => {
         navbar.classList.remove("navbar--dark");
     }
 })
+
 // navbar 메뉴 클릭 시 스크롤 이동
 const navbarMenu = document.querySelector(".navbar__menu");
 navbarMenu.addEventListener("click", (e) => {
@@ -20,8 +21,18 @@ navbarMenu.addEventListener("click", (e) => {
     if (link === null) {
         return;
     }
+    //small screen에서 스크롤링할때는 navbar를 보이지 않게 하는 작업
+    navbarMenu.classList.remove('open');
+
     scrollIntoView(link);
 })
+
+// navbar 토글버튼 for small screen
+const navbarToggleBtn = document.querySelector(".navbar__toggle-btn");
+navbarToggleBtn.addEventListener("click", () => {
+    navbarMenu.classList.toggle("open");
+})
+
 
 // contact버튼 클릭 시 스크롤을 contact로 이동
 const homeContactBtn = document.querySelector(".home__contact");
@@ -99,7 +110,6 @@ workBtnContainer.addEventListener("click", (e) => {
         projectsContainer.classList.remove("anim-out");
     }, 300)
 
-
     // 아래는 foreach외 사용가능한 문법
     // for(let project of projects) {
     //     console.log(project);
@@ -113,6 +123,8 @@ workBtnContainer.addEventListener("click", (e) => {
     // }
 
 });
+
+
 
 
 function scrollIntoView(selector) {
